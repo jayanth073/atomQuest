@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { Check, ArrowLeft } from 'lucide-react';
 
 export default function ApprovalActions({ employeeId }: { employeeId: string }) {
   const router = useRouter();
@@ -21,18 +22,20 @@ export default function ApprovalActions({ employeeId }: { employeeId: string }) 
   };
 
   return (
-    <div className="flex gap-4 p-4 bg-surface-50/80 backdrop-blur-xl rounded-2xl border border-surface-200 shadow-lg">
+    <div className="flex gap-4 p-4 bg-surface-50 border-t border-surface-200 mt-6">
       <button 
         onClick={() => handleAction('RETURN')}
-        className="flex-1 bg-surface-200 hover:bg-surface-300 text-surface-700 font-semibold py-3 rounded-xl transition-all"
+        className="flex-1 btn-secondary flex items-center justify-center gap-2"
       >
-        Return for Rework
+        <ArrowLeft size={16} />
+        <span>Return for Rework</span>
       </button>
       <button 
         onClick={() => handleAction('APPROVE')}
-        className="flex-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-500/20 transition-all"
+        className="flex-2 btn-primary flex items-center justify-center gap-2"
       >
-        Approve Goal Sheet
+        <Check size={16} />
+        <span>Approve Goal Sheet</span>
       </button>
     </div>
   );

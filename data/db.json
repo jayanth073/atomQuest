@@ -3,7 +3,7 @@
     {
       "id": "u1",
       "name": "Demo Employee",
-      "email": "emp@demo.com",
+      "email": "employee@company.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "EMPLOYEE",
       "managerId": "u2"
@@ -11,7 +11,7 @@
     {
       "id": "u2",
       "name": "Demo Manager",
-      "email": "mgr@demo.com",
+      "email": "manager@company.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "MANAGER",
       "managerId": "u3"
@@ -26,15 +26,15 @@
     },
     {
       "id": "u4",
-      "name": "Priya Sharma",
-      "email": "priya@demo.com",
+      "name": "kalyan",
+      "email": "kalyan@demo.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "EMPLOYEE",
       "managerId": "u2"
     },
     {
       "id": "u5",
-      "name": "Rahul Verma",
+      "name": "Rahul sharma",
       "email": "rahul@demo.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "EMPLOYEE",
@@ -42,16 +42,16 @@
     },
     {
       "id": "u6",
-      "name": "Anjali Desai",
-      "email": "anjali@demo.com",
+      "name": "sanjay",
+      "email": "sanjay@demo.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "EMPLOYEE",
       "managerId": "u2"
     },
     {
       "id": "u7",
-      "name": "Karan Singh",
-      "email": "karan@demo.com",
+      "name": "Karthik",
+      "email": "karthik@demo.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
       "role": "EMPLOYEE",
       "managerId": "u2"

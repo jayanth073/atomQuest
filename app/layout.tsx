@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Shell from "@/components/Shell";
 import { ToastProvider } from "@/components/Toast";
 
 export const metadata: Metadata = {
@@ -15,10 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-surface-50 text-surface-900 selection:bg-brand-500/30 selection:text-brand-700">
+      <body className="bg-surface-50 text-surface-900 selection:bg-surface-200 selection:text-surface-900">
         <ToastProvider>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <Shell>
+            {children}
+          </Shell>
         </ToastProvider>
       </body>
     </html>

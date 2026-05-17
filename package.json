@@ -11,6 +11,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "lucide-react": "^1.16.0",
     "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, createContext, useContext, useRef } from 'react';
+import { CheckCircle2, AlertCircle, Info } from 'lucide-react';
 
 interface ToastMessage {
   id: number;
@@ -39,13 +40,16 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map(t => (
           <div
             key={t.id}
-            className={`px-5 py-3 rounded-xl shadow-2xl text-sm font-semibold text-white ${
-              t.type === 'success' ? 'bg-emerald-600' :
-              t.type === 'error' ? 'bg-red-600' :
-              'bg-brand-600'
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg shadow-subtle border bg-white animate-slide-up ${
+              t.type === 'success' ? 'border-emerald-200 text-emerald-800' :
+              t.type === 'error' ? 'border-red-200 text-red-800' :
+              'border-surface-200 text-surface-800'
             }`}
           >
-            {t.text}
+            {t.type === 'success' && <CheckCircle2 size={16} className="text-emerald-500" />}
+            {t.type === 'error' && <AlertCircle size={16} className="text-red-500" />}
+            {t.type === 'info' && <Info size={16} className="text-surface-500" />}
+            <span className="text-sm font-medium">{t.text}</span>
           </div>
         ))}
       </div>

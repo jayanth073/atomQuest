@@ -4,6 +4,7 @@ import { readDb } from '@/lib/db';
 import { QUARTERS } from '@/lib/constants';
 import Link from 'next/link';
 import PushKpiButton from '@/components/PushKpiButton';
+import { Users } from 'lucide-react';
 
 export default function TeamPage() {
   const session = getSession();
@@ -29,38 +30,38 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen pb-20">
       <div className="max-w-7xl mx-auto px-6 pt-8">
-        <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 animate-fade-in">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div className="w-10 h-10 bg-surface-100 rounded-lg flex items-center justify-center border border-surface-200">
+              <Users size={20} className="text-surface-900" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-surface-900">Team Management</h1>
-              <p className="text-surface-500 font-medium">Monitoring {team.length} direct reports</p>
+              <h1 className="text-2xl font-semibold text-surface-900 tracking-tight">Team Management</h1>
+              <p className="text-sm text-surface-500 mt-1">Monitoring {team.length} direct reports</p>
             </div>
           </div>
           <PushKpiButton />
         </header>
 
-        <div className="card overflow-hidden">
-          <div className="px-6 py-4 border-b border-surface-100 bg-surface-50/50">
-            <h2 className="text-base font-bold text-surface-900">Direct Reports</h2>
+        <div className="card overflow-hidden animate-fade-in animate-stagger-1">
+          <div className="px-5 py-4 border-b border-surface-200 bg-white">
+            <h2 className="text-sm font-semibold text-surface-900">Direct Reports</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-surface-100">
-                  <th className="px-6 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider">Employee</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider text-center">Goals</th>
+                <tr className="border-b border-surface-200">
+                  <th className="px-5 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider">Employee</th>
+                  <th className="px-5 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider text-center">Goals</th>
                   {['Q1','Q2','Q3','Q4'].map(q => (
-                    <th key={q} className="px-2 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider text-center">{q}</th>
+                    <th key={q} className="px-3 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider text-center">{q}</th>
                   ))}
-                  <th className="px-6 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider text-center">Weight</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-xs font-semibold text-surface-400 uppercase tracking-wider text-right">Actions</th>
+                  <th className="px-5 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider text-center">Weight</th>
+                  <th className="px-5 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider">Status</th>
+                  <th className="px-5 py-3 text-xs font-medium text-surface-500 uppercase tracking-wider text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-surface-50">
+              <tbody className="divide-y divide-surface-100">
                 {team.map((emp: any) => {
                   const empGoals = db.goals.filter((g: any) => g.employeeId === emp.id);
                   const approvedGoals = empGoals.filter((g: any) => g.status === 'APPROVED');
@@ -78,46 +79,46 @@ export default function TeamPage() {
 
                   return (
                     <tr key={emp.id} className="hover:bg-surface-50 transition-colors">
-                      <td className="px-6 py-4">
-                        <div className="font-semibold text-surface-900">{emp.name}</div>
-                        <div className="text-sm text-surface-500">{emp.email}</div>
+                      <td className="px-5 py-4">
+                        <div className="font-medium text-surface-900 text-sm">{emp.name}</div>
+                        <div className="text-sm text-surface-500 mt-1">{emp.email}</div>
                       </td>
-                      <td className="px-6 py-4 text-center text-surface-600">{empGoals.length}</td>
+                      <td className="px-5 py-4 text-center text-surface-900 text-sm font-medium">{empGoals.length}</td>
                       {['Q1','Q2','Q3','Q4'].map(q => {
                         const n = getQuarterCheckinCount(q);
                         return (
-                          <td key={q} className="px-2 py-4 text-center">
-                            <span className={`text-xs font-semibold ${
-                              approvedGoals.length === 0 ? 'text-surface-200' :
+                          <td key={q} className="px-3 py-4 text-center">
+                            <span className={`text-xs font-medium ${
+                              approvedGoals.length === 0 ? 'text-surface-300' :
                               n >= approvedGoals.length ? 'text-emerald-600' :
-                              n > 0 ? 'text-amber-600' : 'text-red-300'
+                              n > 0 ? 'text-amber-600' : 'text-red-400'
                             }`}>
                               {approvedGoals.length > 0 ? `${n}/${approvedGoals.length}` : '—'}
                             </span>
                           </td>
                         );
                       })}
-                      <td className="px-6 py-4 text-center">
-                        <span className={`font-bold ${totalWeight === 100 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                      <td className="px-5 py-4 text-center">
+                        <span className={`font-semibold text-sm ${totalWeight === 100 ? 'text-surface-900' : 'text-amber-600'}`}>
                           {totalWeight}%
                         </span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-5 py-4">
                         <span className={`badge ${getStatusBadge(status)}`}>
                           {status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-5 py-4 text-right">
                         <div className="flex justify-end gap-2">
                           <Link 
                             href={`/manager/approve/${emp.id}`}
-                            className="btn-primary text-xs py-2"
+                            className="btn-primary text-xs py-1.5 px-3"
                           >
-                            Review Goals
+                            Review
                           </Link>
                           <Link 
                             href={`/manager/checkins/${emp.id}`}
-                            className="btn-secondary text-xs py-2"
+                            className="btn-secondary text-xs py-1.5 px-3"
                           >
                             Check-ins
                           </Link>

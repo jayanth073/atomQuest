@@ -1,6 +1,7 @@
 'use client';
 
 import { useToast } from '@/components/Toast';
+import { Send } from 'lucide-react';
 
 export default function SubmitGoalsButton({ cycleId }: { cycleId?: string }) {
   const { showToast } = useToast();
@@ -24,9 +25,10 @@ export default function SubmitGoalsButton({ cycleId }: { cycleId?: string }) {
   return (
     <button 
       onClick={handleSubmit}
-      className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform active:scale-[0.99]"
+      className="w-full btn-primary flex items-center justify-center gap-2 py-3"
     >
-      Submit Goal Sheet for Approval
+      <Send size={16} />
+      <span>Submit Goal Sheet for Approval</span>
     </button>
   );
 }
