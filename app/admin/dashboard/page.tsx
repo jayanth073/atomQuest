@@ -76,17 +76,19 @@ export default function AdminDashboard() {
     }
   };
 
-  if (loading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex items-center gap-3 text-surface-500 font-medium">
-        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-        </svg>
-        Loading Governance...
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex items-center gap-3 text-surface-500 font-medium">
+          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          Loading Governance...
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   return (
     <div className="min-h-screen pb-20">
@@ -104,7 +106,7 @@ export default function AdminDashboard() {
               <FileText size={14} className="mr-2" /> Excel
             </a>
           </div>
-        
+        </header>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="card p-5 animate-fade-in animate-stagger-1">
@@ -116,7 +118,7 @@ export default function AdminDashboard() {
               <span className="text-2xl font-semibold text-surface-900">{stats.completionRate.toFixed(1)}%</span>
             </div>
           </div>
-          
+
           <div className="card p-5 animate-fade-in animate-stagger-2">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-surface-500 text-sm font-medium">Total Goals</h3>
@@ -160,7 +162,7 @@ export default function AdminDashboard() {
                       <span className={`badge ${c.isActive ? 'badge-success' : 'badge-neutral'}`}>
                         {c.isActive ? 'Active' : 'Closed'}
                       </span>
-                      <button 
+                      <button
                         onClick={() => toggleCycle(c.id)}
                         className={`text-xs font-medium px-3 py-1.5 rounded-md transition-all ${
                           c.isActive ? 'text-red-600 hover:bg-red-50' : 'text-surface-900 hover:bg-surface-100'
@@ -205,7 +207,7 @@ export default function AdminDashboard() {
                           </td>
                         ))}
                         <td className="px-3 py-3 text-right">
-                          <button 
+                          <button
                             onClick={() => handleUnlock(row.id)}
                             className="text-xs font-semibold bg-surface-100 text-surface-500 px-3 py-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 transition-all"
                           >
@@ -283,7 +285,7 @@ export default function AdminDashboard() {
                     <input name="weightage" type="number" defaultValue="10" required className="input-field text-sm" />
                   </div>
                 </div>
-                <button 
+                <button
                   disabled={pushing}
                   className="w-full btn-primary text-sm disabled:opacity-50"
                 >
